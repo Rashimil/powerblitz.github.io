@@ -5,16 +5,24 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="robots" content="index, follow">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic" rel="stylesheet" />
+    <link href="style-push.css" rel="stylesheet" />
     <title>Уведомления</title>
     <style>
 
     </style>
 </head>
+<!-- style="visibility: hidden" -->
 
 <body>
-
-    <button type="button" class="push_btn" id="sc">Test push</button>
-
+    <div align="center">
+        <br>
+        <div class="spinner" style="display: none"></div>
+        <button type="button" class="push_btn button_pseudo" id="sc">Test push</button>
+        <br>
+        <br>
+        <br>
+        <button type="button" class="clear_btn button_pseudo">Clear storage</button>
+    </div>
     <!-- ================================================SCRIPTS============================================================= -->
 
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>

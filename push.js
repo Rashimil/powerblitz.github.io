@@ -87,3 +87,9 @@ $(".push_btn#sc").on('click', function () {
   Check();
   // Subscribe();
 });
+
+// Очистка storage:
+function ClearStorage() {
+  localStorage.clear();
+}
+$(".clear_btn").on("click", ClearStorage);

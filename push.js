@@ -16,7 +16,7 @@ function Check() {
     messaging = firebase.messaging();
     var currentToken = localStorage.getItem("sentFirebaseMessagingToken");
     console.log("Token in LocalStorage: " + currentToken);
-    $('.log_table').append("<tr><td>Токен из LocalStorage: " + currentToken + "</td></tr>"); // Дописываем log_table
+    $('.log_table').append("<tr><td>Токен из LocalStorage: <b>" + currentToken + "</b></td></tr>"); // Дописываем log_table
     // подписываем на уведомления если ещё не подписали
     console.log("Subscribe...");
       $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
@@ -32,7 +32,7 @@ function Subscribe() {
       messaging.getToken()
         .then(function (currentToken) {
           console.log("currentToken: " + currentToken);
-          $('.log_table').append("<tr><td>Получен токен: " + currentToken + "</td></tr>"); // Дописываем log_table
+          $('.log_table').append("<tr><td>Получен токен: <b>" + currentToken + "</b></td></tr>"); // Дописываем log_table
           if (currentToken) {
             console.log("Sending currentToken to GoogleApi...")
             $('.log_table').append("<tr><td>Отправляем токен на сервер [GoogleApi]...</td></tr>"); // Дописываем log_table
@@ -97,4 +97,7 @@ $(".push_btn#sc").on('click', function () {
 function ClearStorage() {
   localStorage.clear();
 }
-$(".clear_btn").on("click", ClearStorage);
+$(".clear_btn").on("click", function() { 
+  ClearStorage();
+  $('.log_table').append("<tr><td>LocalStorage очищено</td></tr>"); // Дописываем log_table
+});

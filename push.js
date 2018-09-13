@@ -14,14 +14,13 @@ function Check() {
   // (вообще, эту проверку должна делать библиотека Firebase, но она этого не делает :3 )
   if ('Notification' in window) {
     messaging = firebase.messaging();
-    // var curToken;
-    // messaging.getToken().then(function (currentToken) {curToken = currentToken});
     var currentToken = localStorage.getItem("sentFirebaseMessagingToken");
-    console.log("Пользователь уже подписан на уведомления, токен: " + currentToken);
-    $('.log_table').append("<tr><td>Пользователь уже подписан на уведомления, токен: " + currentToken + "</td></tr>"); // Дописываем log_table
+    console.log("Token in LocalStorage: " + currentToken);
+    $('.log_table').append("<tr><td>Токен из LocalStorage: " + currentToken + "</td></tr>"); // Дописываем log_table
     // подписываем на уведомления если ещё не подписали
     if (Notification.permission === 'granted') {
       console.log("Подписываем на уведомления...");
+      $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
       Subscribe();
     }
   }
@@ -34,41 +33,42 @@ function Subscribe() {
       // получаем ID устройства
       messaging.getToken()
         .then(function (currentToken) {
-          console.log("Текущий токен: " + currentToken);
-          // document.write("Токен: " + currentToken);
-          // alert(currentToken);
+          console.log("currentToken: " + currentToken);
+          $('.log_table').append("<tr><td>Получен токен: " + currentToken + "</td></tr>"); // Дописываем log_table
           if (currentToken) {
-            console.log("Отправляем токен на сервер googleapi...")
+            console.log("Sending currentToken to GoogleApi...")
+            $('.log_table').append("<tr><td>Отправляем токен на сервер GoogleApi...</td></tr>"); // Дописываем log_table
             sendTokenToServer(currentToken);
           } else {
-            // alert('Не удалось получить токен.');
-            console.warn('Не удалось получить токен');
+            console.warn('Can not get token');
+            $('.log_table').append("<tr><td>Не удалось получить токен!</td></tr>"); // Дописываем log_table
             setTokenSentToServer(false);
           }
         })
         .catch(function (err) {
-          // alert('При получении токена произошла ошибка: ' + err);
-          console.warn('При получении токена произошла ошибка.', err);
+          console.warn('Error: ', err);
+          $('.log_table').append("<tr><td>При получении токена произошла ошибка: " +err + "</td></tr>"); // Дописываем log_table
           setTokenSentToServer(false);
         });
     })
     .catch(function (err) {
-      // alert('Не удалось получить разрешение на показ уведомлений: ' + err);
-      console.warn('Не удалось получить разрешение на показ уведомлений.', err);
+      console.warn('Can not get notifications permission: ', err);
+      $('.log_table').append("<tr><td>Не удалось получить разрешение на показ уведомлений: " +err + "</td></tr>"); // Дописываем log_table
     });
 }
 
 // отправка ID на сервер
 function sendTokenToServer(currentToken) {
   if (!isTokenSentToServer(currentToken)) {
-    console.log('Отправка токена на наш сервер...');
+    console.log('Sending token to server...');
+    $('.log_table').append("<tr><td>Отправка токена на наш сервер [пока пусто]...</td></tr>"); // Дописываем log_table
     var url = ''; // адрес скрипта на сервере который сохраняет ID устройства
     $.post(url, {
       token: currentToken
     });
     setTokenSentToServer(currentToken);
   } else {
-    console.log('Токен уже отправлен на сервер.');
+    $('.log_table').append("<tr><td>Отправка токена на наш сервер [пока пусто]...</td></tr>"); // Дописываем log_table
   }
 }
 

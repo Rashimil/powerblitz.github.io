@@ -37,7 +37,7 @@ function Subscribe() {
           $('.log_table').append("<tr><td>Получен токен: " + currentToken + "</td></tr>"); // Дописываем log_table
           if (currentToken) {
             console.log("Sending currentToken to GoogleApi...")
-            $('.log_table').append("<tr><td>Отправляем токен на сервер GoogleApi...</td></tr>"); // Дописываем log_table
+            $('.log_table').append("<tr><td>Отправляем токен на сервер [GoogleApi]...</td></tr>"); // Дописываем log_table
             sendTokenToServer(currentToken);
           } else {
             console.warn('Can not get token');

@@ -33,7 +33,7 @@ function Subscribe() {
       messaging.getToken()
         .then(function (currentToken) {
           console.log("Текущий токен: " + currentToken);
-          document.write("Токен: " + currentToken);
+          // document.write("Токен: " + currentToken);
           // alert(currentToken);
           if (currentToken) {
             console.log("Отправляем токен на сервер googleapi...")

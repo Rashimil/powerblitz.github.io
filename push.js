@@ -16,6 +16,7 @@ function Check() {
     // messaging.getToken().then(function (currentToken) {curToken = currentToken});
     var currentToken = localStorage.getItem("sentFirebaseMessagingToken");
     console.log("Пользователь уже подписан на уведомления, токен: " + currentToken);
+    $('.log_table').append("<td>Пользователь уже подписан на уведомления, токен: " + currentToken + "</tr>"); // Дописываем log_table
     // подписываем на уведомления если ещё не подписали
     if (Notification.permission === 'granted') {
       console.log("Подписываем на уведомления...");

@@ -14,15 +14,36 @@
 <!-- style="visibility: hidden" -->
 
 <body>
-    <div align="center">
-        <br>
-        <div class="spinner" style="display: none"></div>
-        <button type="button" class="push_btn button_pseudo" id="sc">Test push</button>
-        <br>
-        <br>
-        <br>
-        <button type="button" class="clear_btn button_pseudo">Clear storage</button>
-    </div>
+    <br>
+    <table align="center" border="0">
+        <tbody>
+            <tr>
+                <td width="50%">
+                    <div>
+                        <div class="spinner" style="display: none"></div>
+                        <button type="button" class="push_btn button_pseudo" id="sc">Test push</button>
+                        <br>
+                        <br>
+                        <br>
+                        <button type="button" class="clear_btn button_pseudo">Clear storage</button>
+                    </div>
+                </td>
+                <td width="50%">
+                    <table class="log_table">
+                        <!-- Table Header -->
+                        <tr>                           
+                            <th>Лог</th>
+                        </tr>
+                        <!-- Table Body -->
+                        <tr>
+                            <td>Генетический алгоритм</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
     <!-- ================================================SCRIPTS============================================================= -->
 
     <script type="text/javascript" src="https://www.gstatic.com/firebasejs/3.6.8/firebase.js"></script>

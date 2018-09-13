@@ -4,9 +4,11 @@ var messaging;
 
 function Check() {
   // firebase_subscribe.js
-  firebase.initializeApp({
-    messagingSenderId: senderId
-  });
+  if (!firebase.apps.length) {
+    firebase.initializeApp({
+      messagingSenderId: senderId
+    });
+  }
 
   // Проверяем, поддерживает ли браузер уведомления:
   // (вообще, эту проверку должна делать библиотека Firebase, но она этого не делает :3 )

@@ -18,11 +18,14 @@ function Check() {
     console.log("Token in LocalStorage: " + currentToken);
     $('.log_table').append("<tr><td>Токен из LocalStorage: " + currentToken + "</td></tr>"); // Дописываем log_table
     // подписываем на уведомления если ещё не подписали
-    if (Notification.permission === 'granted') {
-      console.log("Подписываем на уведомления...");
+    console.log("Подписываем на уведомления...");
       $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
       Subscribe();
-    }
+    // if (Notification.permission === 'granted') {
+    //   console.log("Подписываем на уведомления...");
+    //   $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
+    //   Subscribe();
+    // }
   }
 }
 

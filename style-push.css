@@ -43,7 +43,7 @@
         animation: changeContent .8s linear infinite;
         display: block;
         content: "⠋";
-        font-size: 80px;
+        font-size: 80px;        
         }   
         @keyframes changeContent {
         10% { content: "⠙"; }

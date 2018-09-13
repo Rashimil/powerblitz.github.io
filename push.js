@@ -18,14 +18,9 @@ function Check() {
     console.log("Token in LocalStorage: " + currentToken);
     $('.log_table').append("<tr><td>Токен из LocalStorage: " + currentToken + "</td></tr>"); // Дописываем log_table
     // подписываем на уведомления если ещё не подписали
-    console.log("Подписываем на уведомления...");
+    console.log("Subscribe...");
       $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
       Subscribe();
-    // if (Notification.permission === 'granted') {
-    //   console.log("Подписываем на уведомления...");
-    //   $('.log_table').append("<tr><td>Подписываем на уведомления...</td></tr>"); // Дописываем log_table
-    //   Subscribe();
-    // }
   }
 }
 
@@ -87,11 +82,15 @@ function setTokenSentToServer(currentToken) {
     currentToken ? currentToken : ''
   );
 }
-
+var sp
 // по клику запрашиваем у пользователя разрешение на уведомления и запускаем все функции:
 $(".push_btn#sc").on('click', function () {
+  sp = $('.spinner');
+  $(".spinner").css("display","unset");
+  $('.push_btn').css("display","none");
   Check();
-  // Subscribe();
+  $('.spinner').css("display","none");
+  $('.push_btn').css("display","unset");
 });
 
 // Очистка storage:
